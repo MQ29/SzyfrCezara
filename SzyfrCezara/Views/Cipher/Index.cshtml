@@ -1,0 +1,31 @@
+﻿@model CaesarCipherModel
+
+<link rel="stylesheet" href="~/css/Cipher.css">
+<form asp-controller="Cipher" asp-action="Cipher" method="post">
+    <div>
+        <label for="Text">Text:</label>
+        <input type="text" id="Text" name="Text" value="@Model.Text" />
+        <span asp-validation-for="Text"></span>
+    </div>
+    <div>
+        <label for="Shift">Shift:</label>
+        <input type="number" id="Shift" name="Shift" value="@Model.Shift" />
+        <span asp-validation-for="Shift"></span>
+    </div>
+    <div>
+        <label>
+            <input type="radio" name="IsEncrypt" value="true" checked />
+            Encrypt
+        </label>
+        <label>
+            <input type="radio" name="IsEncrypt" value="false" />
+            Decrypt
+        </label>
+    </div>
+    <button type="submit">Submit</button>
+
+    @if (!string.IsNullOrEmpty(Model.Result))
+    {
+        <div class="result">Result: <strong>@Model.Result</strong></div>
+    }
+</form>
